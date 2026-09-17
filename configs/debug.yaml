@@ -1,0 +1,23 @@
+dataset:
+  root: ../data/ixi/T1
+  metadata: ../data/ixi/IXI.xls
+  kind: IXI
+output: ../results/debug
+subject_limit: 50
+seed: 42
+preprocessing:
+  spacing: [2.0, 2.0, 2.0]
+  interpolation_order: 1
+  mask_percentile: 20
+  normalization_percentiles: [1, 99]
+qc:
+  robust_z: 3.5
+  report_subjects: 6
+  include_review: true
+experiment:
+  test_fraction: 0.2
+  validation_fraction: 0.2
+  bootstrap: 1000
+  logistic_c: [0.1, 1.0, 10.0]
+  ridge_alpha: [0.1, 1.0, 10.0, 100.0]
+  methods: [baseline, robust_intensity, combat]

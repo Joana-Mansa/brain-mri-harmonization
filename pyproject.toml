@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "brain-harmonization"
+version = "0.1.0"
+description = "Reproducible IXI T1 MRI quality control and harmonization experiments"
+requires-python = ">=3.10"
+dependencies = [
+  "numpy==1.26.4", "pandas==2.2.3", "scipy==1.14.1", "nibabel==5.3.2",
+  "PyYAML==6.0.2", "scikit-learn==1.5.2", "matplotlib==3.9.4",
+  "neuroCombat==0.2.12", "xlrd==2.0.1", "openpyxl==3.1.5"
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.5", "ruff==0.11.13"]
+
+[project.scripts]
+brain-harmonization = "brain_harmonization.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
